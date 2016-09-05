@@ -1,0 +1,10 @@
+{
+  "db" :{
+    "local" : {
+      "user"      : "dawn",
+      "database"  : "postgres",
+      "host"      :  "localhost",
+      "password"  :  ""
+    }
+  }
+}
