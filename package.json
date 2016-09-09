@@ -1,18 +1,31 @@
 {
-  "name"        : "amoeba-social-user-service",
-  "version"     : "0.1.0",
-  "engines"     : {"node": "5.9.1"},
-  "description" : "User service for amoeba social",
-  "main"        : "index.js",
-  "scripts"     : {"start": "node index.js"},
-  "dependencies": {
-    "pg"              : "4.x",
-    "express"         : "4.13.3",
-    "body-parser"     : "^1.5.2",
-    "errorhandler"    : "^1.1.1",
-    "express-session" : "^1.7.2"
+  "name": "amoeba-social-user-service",
+  "version": "0.1.0",
+  "engines": {
+    "node": "5.9.1"
   },
-  "repository"  : {"type"  : "git", "url"   : "https://github.com/heroku/node-js-getting-started"},
-  "keywords"    : ["node", "heroku", "express"],
-  "license"     : "MIT"
+  "description": "User service for amoeba social",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.5.2",
+    "errorhandler": "^1.1.1",
+    "express": "4.13.3",
+    "express-session": "^1.7.2",
+    "pg": "4.x",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.24.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/node-js-getting-started"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
 }
