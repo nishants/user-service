@@ -14,11 +14,15 @@ app.set('port', (process.env.PORT || 5000));
 
 
 app.post('/users', function (request, response) {
-  response.send({data: Users.create({
+  Users.create({
     firstName : request.body.firstName,
     lastName  : request.body.lastName,
     mail      : request.body.mail,
-  })});
+  }).then(function(user){
+    response.send({data: user});
+  }).catch(function(error){
+    response.send({error: error});
+  })
 });
 
 app.get('/users', function (request, response) {
