@@ -27,7 +27,7 @@ var Sequelize = require('sequelize'),
         defaultValue: Sequelize.NOW
       }});
 
-schema.sync({force: true}).then(function () {});
+schema.sync({force: false}).then(function () {});
 
 module.exports = {
   create : function(user){
