@@ -25,8 +25,7 @@ var Sequelize = require('sequelize'),
         field       : 'lastSeen',
         type        : Sequelize.DATE,
         defaultValue: Sequelize.NOW
-      },
-    });
+      }});
 
 schema.sync({force: true}).then(function () {});
 
@@ -37,5 +36,8 @@ module.exports = {
       lastName  : user.lastName,
       mail      : user.mail,
     });
+  },
+  findAll : function(){
+    return schema.findAll();
   }
 };
