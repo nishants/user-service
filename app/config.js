@@ -43,4 +43,4 @@ var dev = function(){
   };
 };
 
-module.exports = process.env.ENV === "production" ?  prod() : dev() ;
+module.exports = prod() ;
