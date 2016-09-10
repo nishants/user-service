@@ -1,3 +1,3 @@
 export ENV="production"
-sequelize db:migrate --env production
+./node_modules/.bin/sequelize --migrate db:migrate --env production
 web: node index.js
