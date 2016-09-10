@@ -14,11 +14,7 @@ app.set('port', (process.env.PORT || 5000));
 
 
 app.post('/users', function (request, response) {
-  Users.create({
-    firstName : request.body.firstName,
-    lastName  : request.body.lastName,
-    mail      : request.body.mail,
-  }).then(function(user){
+  Users.create(request.body).then(function(user){
     response.send({data: user});
   }).catch(function(error){
     response.status(409);
@@ -29,8 +25,15 @@ app.post('/users', function (request, response) {
 app.get('/users', function (request, response) {
   Users.findAll().then(function(user){
     response.send({data: user});
-  }).catch(function(error){
-    response.send({error: error});
+  });
+});
+
+app.post('/users/login', function (request, response) {
+  var mail     = request.body.mail,
+      password = request.body.password;
+
+  Users.findOne(mail, password).then(function(user){
+    response.send({data: user});
   });
 });
 

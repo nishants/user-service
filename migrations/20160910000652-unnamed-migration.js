@@ -2,7 +2,13 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    queryInterface.createTable('user', {
+    queryInterface.createTable('users', {
+      id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+      },
+
       firstName: {
         field     : 'firstName',
         type      : Sequelize.STRING
@@ -17,6 +23,11 @@ module.exports = {
         allowNull : false,
         unique    : true
       },
+      password: {
+        field     : 'password',
+        type      : Sequelize.STRING,
+        allowNull : false,
+      },
       since: {
         field       : 'since',
         type        : Sequelize.DATE,
@@ -26,10 +37,19 @@ module.exports = {
         field       : 'lastSeen',
         type        : Sequelize.DATE,
         defaultValue: Sequelize.NOW
-      }})
+      },
+      createdAt: {
+        field       : 'createdAt',
+        type        : Sequelize.DATE,
+      },
+      updatedAt: {
+        field       : 'updatedAt',
+        type        : Sequelize.DATE,
+      }
+    })
   },
 
   down: function (queryInterface, Sequelize) {
-    queryInterface.dropTable('user')
+    queryInterface.dropTable('users')
   }
 };

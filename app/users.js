@@ -16,6 +16,11 @@ var Sequelize = require('sequelize'),
         allowNull : false,
         unique    : true
       },
+      password: {
+        field     : 'password',
+        type      : Sequelize.STRING,
+        allowNull : false,
+      },
       since: {
         field       : 'since',
         type        : Sequelize.DATE,
@@ -27,15 +32,12 @@ var Sequelize = require('sequelize'),
         defaultValue: Sequelize.NOW
       }});
 
-schema.sync({force: false}).then(function () {});
-
 module.exports = {
   create : function(user){
-    return schema.create({
-      firstName : user.firstName,
-      lastName  : user.lastName,
-      mail      : user.mail,
-    });
+    return schema.create(user);
+  },
+  findOne : function(mail, password){
+    return schema.findOne({where: {mail: mail, password: password},})
   },
   findAll : function(){
     return schema.findAll();
