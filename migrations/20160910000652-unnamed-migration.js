@@ -1,8 +1,11 @@
 'use strict';
+  var Sequelize     = require('sequelize'),
+    config          = require('../app/config'),
+    sequelize       = new Sequelize(config.db.url());
 
 module.exports = {
-  up: function (queryInterface, Sequelize) {
-    queryInterface.createTable('users', {
+  up: function () {
+    sequelize.define('users', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -46,10 +49,11 @@ module.exports = {
         field       : 'updatedAt',
         type        : Sequelize.DATE,
       }
-    })
+    });
+    return sequelize.sync({force: false});
   },
 
-  down: function (queryInterface, Sequelize) {
-    queryInterface.dropTable('users')
+  down: function () {
+    sequelize.dropTable('users')
   }
 };

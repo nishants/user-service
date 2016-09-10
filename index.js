@@ -12,34 +12,41 @@ pg.defaults.ssl = dbConfig.ssl;
 
 app.use(bodyParser.json());
 app.set('port', port);
-
-
-app.post('/users', function (request, response) {
-  Users.create(request.body).then(function(user){
-    response.send({data: user});
-  }).catch(function(error){
-    response.status(409);
-    response.send({error: error});
+var run = function(){
+  app.post('/users', function (request, response) {
+    Users.create(request.body).then(function(user){
+      response.send({data: user});
+    }).catch(function(error){
+      response.status(409);
+      response.send({error: error});
+    });
   });
-});
 
-app.get('/users', function (request, response) {
-  Users.findAll().then(function(user){
-    response.send({data: user});
+  app.get('/users', function (request, response) {
+    Users.findAll().then(function(user){
+      response.send({data: user});
+    });
   });
-});
 
-app.post('/users/login', function (request, response) {
-  var mail     = request.body.mail,
-      password = request.body.password;
+  app.post('/users/login', function (request, response) {
+    var mail     = request.body.mail,
+        password = request.body.password;
 
-  Users.findOne(mail, password).then(function(user){
-    response.send({data: user});
+    Users.findOne(mail, password).then(function(user){
+      response.send({data: user});
+    });
   });
-});
 
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+  app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+  });
+};
+
+
+var Umzug = require('umzug');
+var umzug = new Umzug({});
+umzug.pending().then(function (migrations) {
+  umzug.up().then(run);
 });
 
 
