@@ -1,23 +1,11 @@
 {
   "development": {
-    "username": "dawn",
-    "password": "12345",
-    "database": "postgres",
-    "host": "localhost",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "use_env_variable": "DATABASE_URL"
   },
   "production": {
-    "username": "vierbvtiwvgelt",
-    "password": "GCorFWB6MigCYrDAH3oXKEaXNF",
-    "database": "d3g1dr5aueqm7f",
-    "host": "ec2-54-243-204-57.compute-1.amazonaws.com:5432",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL"
   }
 }

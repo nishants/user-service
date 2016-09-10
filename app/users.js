@@ -32,6 +32,8 @@ var Sequelize = require('sequelize'),
         defaultValue: Sequelize.NOW
       }});
 
+sequelize.sync({force: false});
+
 module.exports = {
   create : function(user){
     return schema.create(user);

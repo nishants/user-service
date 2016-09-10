@@ -4,13 +4,14 @@ var express     = require('express'),
     pg          = require('pg');
 
 var dbConfig    = config.db,
+    port        = process.env.PORT || 5000
     Users       = require('./app/users'),
-    app         = express(),
-    DATABASE_URL= process.env.DATABASE_URL || dbConfig.url() ;
+    app         = express();
 
 pg.defaults.ssl = dbConfig.ssl;
-app.use(bodyParser.json()); // for parsing application/json
-app.set('port', (process.env.PORT || 5000));
+
+app.use(bodyParser.json());
+app.set('port', port);
 
 
 app.post('/users', function (request, response) {
